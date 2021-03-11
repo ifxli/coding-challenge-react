@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { DataGrid } from '@material-ui/data-grid';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,8 +10,8 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './App.css';
 
-import peopleData from './MOCK_DATA.json'
-const sections = [...new Set(peopleData.map(({ section }) => section))]
+import peopleData from './MOCK_DATA.json';
+const sections = [...new Set(peopleData.map(({ section }) => section))];
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -38,12 +38,13 @@ const columns = [
     field: 'section',
     headerName: 'Section',
     width: 100
-  }
-  
+  } 
 ];
 
-
 const useStyles = makeStyles((theme) => ({
+  header: {
+    backgroundColor: '#f8bdbd'
+  },
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
@@ -52,22 +53,22 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-  const [section, setSection] = useState('')
-  const [people, setPeople] = useState(peopleData)
+  const [section, setSection] = useState('');
+  const [people, setPeople] = useState(peopleData);
 
   const handleSectionSelect = (e) => {
-    const selectedValue = e.target.value
-    setSection(selectedValue)
+    const selectedValue = e.target.value;
+    setSection(selectedValue);
     if (selectedValue !== '') {
-      setPeople(peopleData.filter(({ section }) => section === selectedValue))
+      setPeople(peopleData.filter(({ section }) => section === selectedValue));
     } else {
-      setPeople(peopleData)
+      setPeople(peopleData);
     }
-  }
+  };
 
   return (
     <div className="App">
-      <Toolbar>
+      <Toolbar className={classes.header}>
         <Typography variant="h6" component="div">
           People Data
         </Typography>
@@ -92,7 +93,7 @@ function App() {
           </FormControl>
         </Tooltip>
       </Toolbar>
-      <DataGrid rows={people} columns={columns} pageSize={20} checkboxSelection />
+      <DataGrid rows={people} columns={columns} pageSize={10} checkboxSelection />
     </div>
   );
 }
