@@ -47,10 +47,7 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
+  }
 }));
 
 function App() {
@@ -71,11 +68,11 @@ function App() {
   return (
     <div className="App">
       <Toolbar>
-        <Typography variant="h6" id="tableTitle" component="div">
+        <Typography variant="h6" component="div">
           People Data
         </Typography>
 
-        <Tooltip title="Filter list">
+        <Tooltip title="Filter by section">
           <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel id="demo-simple-select-outlined-label">Section</InputLabel>
             <Select
