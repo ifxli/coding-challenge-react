@@ -89,7 +89,7 @@ function App() {
                 <em>None</em>
               </MenuItem>
               {
-                sections.map((section) => <MenuItem value={section}>{section}</MenuItem>)
+                sections.map((section, index) => <MenuItem value={section} key={index}>{section}</MenuItem>)
               }
             </Select>
           </FormControl>
